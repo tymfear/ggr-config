@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  ggr:
+    image: aerokube/ggr:latest
+    ports:
+      - 4444:4444
+    restart: always
+    network_mode: bridge
+    volumes:
+      - ./ggr:/etc/grid-router:ro
+    command: ['-timeout', '18m']
+    container_name: ggr
+
+  ggr-ui:
+    image: aerokube/ggr-ui:latest
+    network_mode: bridge
+    ports:
+      - 8888:8888
+    volumes:
+      - ./ggr/quota:/etc/grid-router/quota:ro
+    depends_on:
+      - ggr
+    restart: always
+    container_name: ggr-ui
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest
+    network_mode: bridge
+    ports:
+      - 8080:8080
+    volumes:
+      - ./ggr/quota:/etc/grid-router/quota:ro
+    depends_on:
+      - ggr-ui
+    links:
+      - ggr-ui
+    restart: always
+    command: ['--selenoid-uri', 'http://ggr-ui:8888']
+    container_name: selenoid-ui
+

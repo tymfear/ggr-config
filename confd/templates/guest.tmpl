@@ -1,0 +1,11 @@
+<qa:browsers xmlns:qa="urn:config.gridrouter.qatools.ru">
+    <browser name="chrome" defaultVersion="73.0">
+        <version number="73.0">
+            <region name="systemqa">
+            {{range getvs "/sqa/*"}}
+                <host name="{{.}}" port="4444" count="1"/>
+            {{end}}
+            </region>
+        </version>
+    </browser>
+</qa:browsers>

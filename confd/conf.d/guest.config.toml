@@ -1,0 +1,7 @@
+[template]
+src = "guest.tmpl"
+dest = "/aws-ggr-config/ggr/quota/guest.xml"
+keys = [
+    "/ip",
+]
+reload_cmd = "docker kill -s HUP ggr && docker kill -s HUP ggr-ui"
