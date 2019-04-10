@@ -1,6 +1,6 @@
 [template]
 src = "guest.tmpl"
-dest = "/aws-ggr-config/ggr/quota/guest.xml"
+dest = "/ggr-config/ggr/quota/guest.xml"
 keys = [
     "/ip",
 ]
