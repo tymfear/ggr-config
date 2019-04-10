@@ -9,7 +9,7 @@ services:
     network_mode: bridge
     volumes:
       - ./ggr:/etc/grid-router:ro
-    command: ['-timeout', '18m']
+    command: ['--guests-allowed', '-guests-quota', 'guest']
     container_name: ggr
 
   ggr-ui:
