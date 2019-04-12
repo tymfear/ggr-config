@@ -28,7 +28,7 @@ services:
     image: aerokube/selenoid-ui:latest
     network_mode: bridge
     ports:
-      - 8080:8080
+      - 80:8080
     volumes:
       - ./ggr/quota:/etc/grid-router/quota:ro
     depends_on:
